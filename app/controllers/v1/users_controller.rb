@@ -10,8 +10,8 @@ module V1
     end
 
     def login
-      @user = User.where(id:params[:user][:student_id], password:params[:user][:password])
-      if @user.count > 0
+      @user = User.where(id:params[:user][:student_id], password:params[:user][:password]).take
+      if @user.present?
         render json: { status: 'SUCCESS', user:@user}
       else
         render status: 401
