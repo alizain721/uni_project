@@ -11,7 +11,6 @@ module V1
 
     def login
       @user = User.where(email:params[:user][:email], password:params[:user][:password])
-      byebug
       if @user.count > 0
         render status: 200
       else
